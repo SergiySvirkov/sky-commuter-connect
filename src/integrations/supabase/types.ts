@@ -14,6 +14,153 @@ export type Database = {
   }
   public: {
     Tables: {
+      bookings: {
+        Row: {
+          created_at: string
+          customer_email: string | null
+          customer_name: string | null
+          customer_phone: string | null
+          departure_point: string
+          destination: string
+          flight_date: string
+          flight_time: string
+          helicopter_id: string | null
+          id: string
+          passengers: number
+          route_id: string | null
+          special_requests: string | null
+          status: string | null
+          total_price: number | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          departure_point: string
+          destination: string
+          flight_date: string
+          flight_time: string
+          helicopter_id?: string | null
+          id?: string
+          passengers: number
+          route_id?: string | null
+          special_requests?: string | null
+          status?: string | null
+          total_price?: number | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          departure_point?: string
+          destination?: string
+          flight_date?: string
+          flight_time?: string
+          helicopter_id?: string | null
+          id?: string
+          passengers?: number
+          route_id?: string | null
+          special_requests?: string | null
+          status?: string | null
+          total_price?: number | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_helicopter_id_fkey"
+            columns: ["helicopter_id"]
+            isOneToOne: false
+            referencedRelation: "helicopters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_route_id_fkey"
+            columns: ["route_id"]
+            isOneToOne: false
+            referencedRelation: "routes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      helicopters: {
+        Row: {
+          capacity: number
+          created_at: string
+          description: string | null
+          hourly_rate: number
+          id: string
+          image_url: string | null
+          model: string
+          name: string
+          specifications: Json | null
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          capacity: number
+          created_at?: string
+          description?: string | null
+          hourly_rate: number
+          id?: string
+          image_url?: string | null
+          model: string
+          name: string
+          specifications?: Json | null
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          capacity?: number
+          created_at?: string
+          description?: string | null
+          hourly_rate?: number
+          id?: string
+          image_url?: string | null
+          model?: string
+          name?: string
+          specifications?: Json | null
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      routes: {
+        Row: {
+          created_at: string
+          distance_miles: number | null
+          duration_minutes: number
+          from_location: string
+          id: string
+          price_per_person: number
+          to_location: string
+        }
+        Insert: {
+          created_at?: string
+          distance_miles?: number | null
+          duration_minutes: number
+          from_location: string
+          id?: string
+          price_per_person: number
+          to_location: string
+        }
+        Update: {
+          created_at?: string
+          distance_miles?: number | null
+          duration_minutes?: number
+          from_location?: string
+          id?: string
+          price_per_person?: number
+          to_location?: string
+        }
+        Relationships: []
+      }
       users: {
         Row: {
           created_at: string
