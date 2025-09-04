@@ -131,6 +131,92 @@ export type Database = {
         }
         Relationships: []
       }
+      order_history: {
+        Row: {
+          booking_id: string | null
+          created_at: string
+          flight_date: string
+          flight_time: string
+          helicopter_used: string | null
+          id: string
+          passengers: number
+          route_from: string
+          route_to: string
+          status: string
+          total_amount: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          booking_id?: string | null
+          created_at?: string
+          flight_date: string
+          flight_time: string
+          helicopter_used?: string | null
+          id?: string
+          passengers: number
+          route_from: string
+          route_to: string
+          status?: string
+          total_amount?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          booking_id?: string | null
+          created_at?: string
+          flight_date?: string
+          flight_time?: string
+          helicopter_used?: string | null
+          id?: string
+          passengers?: number
+          route_from?: string
+          route_to?: string
+          status?: string
+          total_amount?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_history_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       routes: {
         Row: {
           created_at: string
@@ -158,21 +244,6 @@ export type Database = {
           id?: string
           price_per_person?: number
           to_location?: string
-        }
-        Relationships: []
-      }
-      users: {
-        Row: {
-          created_at: string
-          id: number
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-        }
-        Update: {
-          created_at?: string
-          id?: number
         }
         Relationships: []
       }

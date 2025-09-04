@@ -9,6 +9,7 @@ import { Calendar, ArrowLeft, Plane } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 import Navigation from "@/components/Navigation";
 
 const BookingPage = () => {
@@ -16,6 +17,7 @@ const BookingPage = () => {
   const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const [formData, setFormData] = useState({
     helicopter_id: "",
@@ -73,6 +75,7 @@ const BookingPage = () => {
       const { error } = await supabase
         .from("bookings")
         .insert([{
+          user_id: user?.id,
           helicopter_id: formData.helicopter_id || null,
           route_id: formData.route_id || null,
           departure_point: formData.departure_point,
@@ -129,11 +132,11 @@ const BookingPage = () => {
           {/* Header */}
           <div className="mb-8">
             <Link 
-              to="/" 
+              to="/dashboard" 
               className="inline-flex items-center gap-2 text-aviation-gold hover:text-aviation-gold/80 transition-colors mb-4"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to Home
+              Back to Dashboard
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Book Your <span className="text-aviation-gold">Flight</span>

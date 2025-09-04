@@ -62,11 +62,11 @@ const RoutesPage = () => {
           {/* Header */}
           <div className="mb-12">
             <Link 
-              to="/" 
+              to="/dashboard" 
               className="inline-flex items-center gap-2 text-aviation-gold hover:text-aviation-gold/80 transition-colors mb-4"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to Home
+              Back to Dashboard
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Popular <span className="text-aviation-gold">Routes</span>
