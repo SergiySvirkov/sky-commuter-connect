@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Plane, MapPin, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/helicopter-hero.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -33,11 +36,21 @@ const HeroSection = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="premium" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              variant="premium" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => navigate("/booking")}
+            >
               <Plane className="w-5 h-5 mr-2" />
               Book Your Flight
             </Button>
-            <Button variant="ghost" size="lg" className="text-lg px-8 py-6 border border-border hover:bg-card">
+            <Button 
+              variant="ghost" 
+              size="lg" 
+              className="text-lg px-8 py-6 border border-border hover:bg-card"
+              onClick={() => navigate("/routes")}
+            >
               <MapPin className="w-5 h-5 mr-2" />
               View Routes
             </Button>
